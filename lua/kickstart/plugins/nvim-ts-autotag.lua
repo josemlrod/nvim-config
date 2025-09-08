@@ -1,6 +1,6 @@
 return {
   {
-    'nvim-ts-autotag',
+    'windwp/nvim-ts-autotag',
     opts = {},
     -- Also override individual filetype configs, these take priority.
     -- Empty by default, useful if one of the "opts" global settings
