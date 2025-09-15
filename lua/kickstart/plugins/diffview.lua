@@ -3,8 +3,8 @@ return {
     'sindrets/diffview.nvim',
     config = function()
       -- Open and close
-      vim.keymap.set('n', '<leader>do', '<cmd>DiffviewOpen HEAD<CR>', {
-        desc = 'Open Diffview against HEAD',
+      vim.keymap.set('n', '<leader>do', '<cmd>DiffviewOpen<CR>', {
+        desc = 'Open Diffview',
       })
 
       vim.keymap.set('n', '<leader>dc', '<cmd>DiffviewClose<CR>', {
