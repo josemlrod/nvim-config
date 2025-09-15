@@ -219,7 +219,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- ADDED BY ME: Disable Neovim's built-in auto-indent for JS/TS/TSX
+-- ADDED BY ME
+-- Disable Neovim's built-in auto-indent for JS/TS/TSX
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
   callback = function()
@@ -235,6 +236,8 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.expandtab = true
   end,
 })
+-- Copy current buffer's relative path
+vim.keymap.set('n', '<leader>cp', ':let @+ = expand("%")<CR>', { desc = 'Copy current buffer relative path' })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
