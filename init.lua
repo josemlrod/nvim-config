@@ -1023,8 +1023,9 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.nvim-ts-autotag',
-  require 'kickstart.plugins.diffview',
-  -- require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.diffview',
+  require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.lazynvim',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
