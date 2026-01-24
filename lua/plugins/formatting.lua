@@ -17,7 +17,7 @@ return {
       notify_on_error = false,
       formatters = {
         biome = {
-          prepend_args = { '--quote-style=single' },
+          append_args = { '--javascript-formatter-quote-style=single', '--jsx-quote-style=single' },
         },
       },
       format_on_save = function(bufnr)
