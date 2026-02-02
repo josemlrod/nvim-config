@@ -15,11 +15,7 @@ return {
     },
     opts = {
       notify_on_error = false,
-      formatters = {
-        biome = {
-          append_args = { '--javascript-formatter-quote-style=single', '--jsx-quote-style=single' },
-        },
-      },
+      formatters = {},
       format_on_save = function(bufnr)
         local disable_filetypes = { c = true, cpp = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
