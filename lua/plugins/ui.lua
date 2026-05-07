@@ -44,6 +44,16 @@ return {
   },
 
   {
+    'nvim-treesitter/nvim-treesitter-context',
+    event = 'VeryLazy',
+    opts = {
+      max_lines = 3,
+      multiline_threshold = 2,
+      mode = 'cursor',
+    },
+  },
+
+  {
     'echasnovski/mini.statusline',
     version = '*',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
