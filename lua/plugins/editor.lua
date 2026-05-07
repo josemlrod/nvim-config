@@ -2,6 +2,65 @@ return {
   'NMAC427/guess-indent.nvim',
 
   {
+    'kevinhwang91/promise-async',
+    lazy = true,
+  },
+
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = { 'kevinhwang91/promise-async' },
+    event = 'VeryLazy',
+    opts = {
+      provider_selector = function(_, filetype)
+        local lsp_filetypes = {
+          html = true,
+          css = true,
+          javascript = true,
+          javascriptreact = true,
+          typescript = true,
+          typescriptreact = true,
+          tsx = true,
+          jsx = true,
+        }
+
+        if lsp_filetypes[filetype] then
+          return function(bufnr)
+            local function handle_fallback(err, provider)
+              if type(err) == 'string' and err:match 'UfoFallbackException' then
+                return require('ufo').getFolds(bufnr, provider)
+              end
+
+              return require('promise').reject(err)
+            end
+
+            return require('ufo').getFolds(bufnr, 'lsp'):catch(function(err)
+              return handle_fallback(err, 'treesitter')
+            end):catch(function(err)
+              return handle_fallback(err, 'indent')
+            end)
+          end
+        end
+
+        return { 'treesitter', 'indent' }
+      end,
+    },
+    init = function()
+      vim.keymap.set('n', 'zR', function()
+        require('ufo').openAllFolds()
+      end, { desc = 'Open all folds' })
+      vim.keymap.set('n', 'zM', function()
+        require('ufo').closeAllFolds()
+      end, { desc = 'Close all folds' })
+      vim.keymap.set('n', 'zp', function()
+        local winid = require('ufo').peekFoldedLinesUnderCursor()
+        if not winid then
+          vim.lsp.buf.hover()
+        end
+      end, { desc = 'Peek folded lines' })
+    end,
+  },
+
+  {
     'folke/which-key.nvim',
     event = 'VimEnter',
     opts = {

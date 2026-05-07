@@ -46,7 +46,8 @@ vim.o.undofile = true
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
--- Folding (treesitter-based)
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+-- Folding
+vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true

@@ -99,8 +99,14 @@ return {
       }
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
+      capabilities.textDocument = capabilities.textDocument or {}
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
 
       local servers = {
+        html = {},
         ts_ls = {
           settings = {
             typescript = {
@@ -119,6 +125,7 @@ return {
             },
           },
         },
+        cssls = {},
         jsonls = {},
         tailwindcss = {},
         lua_ls = {
